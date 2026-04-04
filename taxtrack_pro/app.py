@@ -999,4 +999,4 @@ if __name__ == '__main__':
             db.session.add(user)
             db.session.commit()
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=os.getenv('FLASK_DEBUG', '1') == '1', host='0.0.0.0', port=int(os.getenv('PORT', '5000')))
