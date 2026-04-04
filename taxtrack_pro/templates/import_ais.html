@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Import AIS/TIS - TaxTrack Pro{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <h2><i class="fas fa-upload"></i> <span class="badge-autofetch data-type-badge">AUTO-FETCH</span> Import AIS/mount!) {
+      return false;
+    }
+    if (maxAmount != null && transaction.amount > maxAmount!) {
+      return false;
+    }
+
+    // Check bank names
+    if (bankNames != null &&
+        !bankNames!.contains(transaction.bankName)) {
+      return false;
+    }
+
+    return true;
+  }
+}
+
+class ClassificationRules {
+  static final List<ClassificationRule> rules = [
+    // Salary rules
+    ClassificationRule(
+      name: 'Salary Credit',
+      category: TransactionCategory.salary,
+      confidence: 0.95,
+      reason: 'Narration contains SALARY',
+      narrationPattern: RegExp(r'SALARY|PAY|PAYROLL|REMITTANCE',
+          caseSensitive: false),
+      minAmount: 10000,
+      bankNames: ['HDFC', 'ICICI', 'Axis', 'SBI'],
+    ),
+
+    // Interest rules
+    ClassificationRule(
+      name: 'Interest Credit',
+      category: TransactionCategory.interest,
+      confidence: 0.9,
+      reason: 'Narration contains INTEREST',
+      narrationPattern: RegExp(r'INTEREST|INT |ACCRUED', caseSensitive: false),
+      minAmount: 100,
+    ),
+
+    // Dividend rules
+    ClassificationRule(
+      name: 'Dividend Credit',
+      category: TransactionCategory.dividends,
+      confidence: 0.85,
+      reason: 'Narration contains DIVIDEND',
+      narrationPattern: RegExp(r'DIVIDEND|DIV', caseSensitive: false),
+    ),
+
+    // Business expense rules
+    ClassificationRule(
+      name: 'Travel Debit',
+      category: TransactionCategory.businessExpense,
+      confidence: 0.7,
+      reason: 'Narration suggests business travel',
+      narrationPattern: RegExp(r'AIRLINE|HOTEL|RAILWAY|UBER|TAXI',
+          caseSensitive: false),
+    ),
+  ];
+}
+
+class ClassificationResult {
+  final TransactionCategory category;
+  final double confidence;
+  final String reason;
+
+  ClassificationResult({
+    required this.category,
+    required this.confidence,
+    required this.reason,
+  });
+}
