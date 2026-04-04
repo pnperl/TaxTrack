@@ -1,2 +1,21 @@
-<!doctype html>
-<html><head><meta charset='utf-8'><title>Itr3 Preview</title></head><body><h1>Itr3 Preview</h1></body></html>
+{% extends "base.html" %}
+{% block title %}ITR-3 Preview - TaxTrack Pro{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3>ITR-3 Preview</h3>
+  <div class="row g-3 mb-3">
+    <div class="col-md-4"><div class="card card-body"><small>Salary</small><strong>₹{{ '%.2f'|format(income_summary.salary) }}</strong></div></div>
+    <div class="col-md-4"><div class="card card-body"><small>Other Income</small><strong>₹{{ '%.2f'|format(income_summary.interest + income_summary.dividend + income_summary.capital_gains + income_summary.other_income) }}</strong></div></div>
+    <div class="col-md-4"><div class="card card-body"><small>Total Tax</small><strong>₹{{ '%.2f'|format(tax_calc.total_tax) }}</strong></div></div>
+  </div>
+
+  {% if warnings %}
+  <div class="alert alert-warning"><ul class="mb-0">{% for w in warnings %}<li>{{ w }}</li>{% endfor %}</ul></div>
+  {% endif %}
+
+  <div class="card">
+    <div class="card-header">Generated ITR-3 JSON</div>
+    <div class="card-body"><pre class="mb-0" style="white-space: pre-wrap">{{ itr3_json }}</pre></div>
+  </div>
+</div>
+{% endblock %}

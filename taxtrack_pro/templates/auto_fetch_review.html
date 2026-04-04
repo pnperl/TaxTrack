@@ -1,2 +1,24 @@
-<!doctype html>
-<html><head><meta charset='utf-8'><title>Auto Fetch Review</title></head><body><h1>Auto Fetch Review</h1></body></html>
+{% extends "base.html" %}
+{% block title %}Auto-Fetch Review - TaxTrack Pro{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3>Auto-Fetch Review</h3>
+  <p class="text-muted">Pending items: {{ pending_count }} | Pending income: ₹{{ '%.2f'|format(total_pending_income) }}</p>
+
+  {% for title, rows in [('Pending', pending_items), ('Approved', approved_items), ('Flagged', flagged_items)] %}
+  <h5 class="mt-4">{{ title }}</h5>
+  <div class="table-responsive">
+    <table class="table table-sm table-striped">
+      <thead><tr><th>Date</th><th>Category</th><th>Entity</th><th class="text-end">Amount</th></tr></thead>
+      <tbody>
+      {% for item in rows %}
+      <tr><td>{{ item.date }}</td><td>{{ item.category }}</td><td>{{ item.entity_name or '-' }}</td><td class="text-end">₹{{ '%.2f'|format(item.amount) }}</td></tr>
+      {% else %}
+      <tr><td colspan="4" class="text-center text-muted">No items.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
