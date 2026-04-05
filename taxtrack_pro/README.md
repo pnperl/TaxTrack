@@ -20,7 +20,7 @@ You have 3 practical options:
 2. From your phone, open Render/Railway dashboard and create a new web service from repo.
 3. Configure:
    - Build command: `pip install -r requirements.txt`
-   - Start command: `gunicorn -w 2 -b 0.0.0.0:$PORT app:app`
+   - Start command: `gunicorn -w 2 -b 0.0.0.0:8080 app:app`
 4. Open generated HTTPS URL on mobile.
 
 ### Option C: Android Termux (local on phone)
