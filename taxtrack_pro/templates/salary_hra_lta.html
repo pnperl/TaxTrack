@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Salary / HRA / LTA - TaxTrack Pro{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-3">Salary Details</h3>
+  <form method="post" class="card card-body mb-4">
+    <div class="row g-3">
+      <div class="col-md-4"><label class="form-label">Gross Salary</label><input name="gross_salary" type="number" step="0.01" class="form-control" required></div>
+      <div class="col-md-4"><label class="form-label">Basic</label><input name="basic" type="number" step="0.01" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">HRA</label><input name="house_rent_allowance" type="number" step="0.01" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">LTA</label><input name="leave_travel_allowance" type="number" step="0.01" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Professional Tax</label><input name="professional_tax" type="number" step="0.01" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">TDS Deducted</label><input name="tds_deducted" type="number" step="0.01" class="form-control"></div>
+      <div class="col-md-6"><label class="form-label">Employer Name</label><input name="employer_name" class="form-control"></div>
+      <div class="col-md-6"><label class="form-label">Employer TAN</label><input name="employer_tan" class="form-control"></div>
+    </div>
+    <div class="mt-3"><button class="btn btn-primary">Add Salary Record</button></div>
+  </form>
+
+  <div class="alert alert-info py-2">
+    HRA rules: {{ hra_info.rule_1 }}, {{ hra_info.rule_2 }}, {{ hra_info.rule_3 }}.
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-sm table-striped">
+      <thead><tr><th>Employer</th><th>Gross</th><th>TDS</th></tr></thead>
+      <tbody>
+      {% for s in salary_list %}
+      <tr><td>{{ s.employer_name or '-' }}</td><td>₹{{ '%.2f'|format(s.gross_salary) }}</td><td>₹{{ '%.2f'|format(s.tds_deducted) }}</td></tr>
+      {% else %}
+      <tr><td colspan="3" class="text-center text-muted">No salary records added.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
