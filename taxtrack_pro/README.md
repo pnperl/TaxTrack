@@ -29,6 +29,7 @@ You have 3 practical options:
    ```bash
    pkg update -y
    pkg install -y python git
+   git clone https://github.com/pnperl/TaxTrack
    cd TaxTrack/taxtrack_pro
    python -m venv .venv
    source .venv/bin/activate
