@@ -3,25 +3,24 @@
 Flask-based mobile-first prototype for preparing ITR-3 from imported AIS/26AS-style data.
 
 ## One-click start (for each platform)
-Run from repo root **or** inside `taxtrack_pro/` (scripts auto-detect path).
+If your terminal is already in `taxtrack_pro/`, use:
 
 ### Replit (one click)
-- Replit Run button is configured via `.replit`.
-- Manual command:
-  ```bash
-  bash taxtrack_pro/one_click/replit_start.sh
-  ```
+```bash
+bash start_replit.sh
+```
 
 ### Render / Railway (one click shell command)
 ```bash
-bash taxtrack_pro/one_click/cloud_start.sh
+bash start_cloud.sh
 ```
-(For normal deploy UI, `Procfile` already uses Gunicorn.)
 
 ### Termux Android (one click)
 ```bash
-bash taxtrack_pro/one_click/termux_start.sh
+bash start_termux.sh
 ```
+
+If you are in the parent repo directory, prefix with `taxtrack_pro/` (example: `bash taxtrack_pro/start_replit.sh`).
 
 ---
 
@@ -30,7 +29,7 @@ You have 3 practical options:
 
 ### Option A (easiest): Replit from phone browser
 1. Open **replit.com** on mobile browser and create/import this project.
-2. Tap **Run** (uses `.replit`).
+2. Tap **Run** (uses `.replit` → `start_replit.sh`).
 3. Open the public Replit URL on phone.
 
 ### Option B: Render / Railway deployment from phone
@@ -46,7 +45,7 @@ You have 3 practical options:
 2. Clone repo and run:
    ```bash
    cd TaxTrack/taxtrack_pro
-   bash one_click/termux_start.sh
+   bash start_termux.sh
    ```
 3. Open `http://127.0.0.1:5000` on same phone.
 
