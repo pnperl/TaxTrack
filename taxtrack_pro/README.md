@@ -3,24 +3,24 @@
 Flask-based mobile-first prototype for preparing ITR-3 from imported AIS/26AS-style data.
 
 ## One-click start (for each platform)
-Run these from inside `taxtrack_pro/`.
+Run from repo root **or** inside `taxtrack_pro/` (scripts auto-detect path).
 
 ### Replit (one click)
 - Replit Run button is configured via `.replit`.
 - Manual command:
   ```bash
-  bash one_click/replit_start.sh
+  bash taxtrack_pro/one_click/replit_start.sh
   ```
 
 ### Render / Railway (one click shell command)
 ```bash
-bash one_click/cloud_start.sh
+bash taxtrack_pro/one_click/cloud_start.sh
 ```
 (For normal deploy UI, `Procfile` already uses Gunicorn.)
 
 ### Termux Android (one click)
 ```bash
-bash one_click/termux_start.sh
+bash taxtrack_pro/one_click/termux_start.sh
 ```
 
 ---

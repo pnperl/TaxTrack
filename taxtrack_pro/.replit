@@ -1,2 +1,2 @@
-run = "bash one_click/replit_start.sh"
+run = "bash taxtrack_pro/one_click/replit_start.sh"
 language = "python3"
