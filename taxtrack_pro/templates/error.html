@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block title %}Error - TaxTrack Pro{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="alert alert-danger">{{ error or 'Something went wrong.' }}</div>
+</div>
+{% endblock %}
