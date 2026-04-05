@@ -11,7 +11,7 @@ You have 3 practical options:
 3. In Replit shell, run:
    ```bash
    pip install -r requirements.txt
-   gunicorn -w 2 -b 0.0.0.0:8080 app:app
+   gunicorn -w 2 -b 0.0.0.0:$PORT app:app
    ```
 4. Open the Replit web URL shown by Replit (works directly on phone).
 
@@ -20,7 +20,7 @@ You have 3 practical options:
 2. From your phone, open Render/Railway dashboard and create a new web service from repo.
 3. Configure:
    - Build command: `pip install -r requirements.txt`
-   - Start command: `gunicorn -w 2 -b 0.0.0.0:8080 app:app`
+   - Start command: `gunicorn -w 2 -b 0.0.0.0:$PORT app:app`
 4. Open generated HTTPS URL on mobile.
 
 ### Option C: Android Termux (local on phone)
@@ -29,7 +29,6 @@ You have 3 practical options:
    ```bash
    pkg update -y
    pkg install -y python git
-   git clone https://github.com/pnperl/TaxTrack
    cd TaxTrack/taxtrack_pro
    python -m venv .venv
    source .venv/bin/activate

@@ -148,7 +148,7 @@ class AutoFetchItem(db.Model):
     correction_id = db.Column(db.String(36), db.ForeignKey('corrections.id'))
     
     # Metadata
-    metadata = db.Column(db.Text)  # JSON for extra info
+    metadata_json = db.Column('metadata', db.Text)  # JSON for extra info
     import_date = db.Column(db.DateTime, default=datetime.utcnow)
     
     def __repr__(self):
